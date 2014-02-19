@@ -38,6 +38,7 @@ public class PacketType {
 	public static final PacketType ENV_SET_MAP_APPEARANCE; // 30
 	public static final PacketType ENV_SET_WEATHER_TYPE; // 31
 	public static final PacketType MESSAGE_TYPES; // [Placeholder]
+        public static final PacketType PLAY_SOUND; // 32
 	public int length;
 
 	private static int nextOpcode;
@@ -92,6 +93,7 @@ public class PacketType {
 				Short.TYPE });
 		ENV_SET_WEATHER_TYPE = new PacketType(new Class[] { Byte.TYPE });
 		MESSAGE_TYPES = new PacketType(new Class[] { Byte.TYPE });
+                PLAY_SOUND = new PacketType(new Class[] { String.class, Short.TYPE, Short.TYPE, Short.TYPE, Byte.TYPE });
 
 		// set names
 		EXT_INFO.extName = "ExtInfo";
@@ -108,6 +110,7 @@ public class PacketType {
 		ENV_SET_MAP_APPEARANCE.extName = "EnvMapAppearance";
 		ENV_SET_WEATHER_TYPE.extName = "EnvWeatherType";
 		MESSAGE_TYPES.extName = "MessageTypes";
+                PLAY_SOUND.extName = "PlaySound";
 		nextOpcode = 0;
 	}
 

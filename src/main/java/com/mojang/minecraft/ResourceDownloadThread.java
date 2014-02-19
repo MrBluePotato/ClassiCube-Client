@@ -127,7 +127,16 @@ public class ResourceDownloadThread extends Thread {
 				"sound3/dig/sand1.ogg", "sound3/dig/sand2.ogg", "sound3/dig/sand3.ogg",
 				"sound3/dig/sand4.ogg", "sound3/dig/snow1.ogg", "sound3/dig/snow2.ogg",
 				"sound3/dig/snow3.ogg", "sound3/dig/snow4.ogg", "sound3/random/glass1.ogg",
-				"sound3/random/glass2.ogg", "sound3/random/glass3.ogg" };
+				"sound3/random/glass2.ogg", "sound3/random/glass3.ogg", "sound3/fireworks/blast1.ogg", 
+                                "sound3/fireworks/launch1.ogg", "sound3/fireworks/twinkle1.ogg", "sound3/random/explode1.ogg",
+                                "sound3/random/explode2.ogg", "sound3/random/explode3.ogg", "sound3/random/fuse.ogg", "sound3/random/splash.ogg",
+                                "sound3/ambient/weather/rain1.ogg", "sound3/ambient/weather/rain2.ogg", "sound3/ambient/weather/rain3.ogg", 
+                                "sound3/ambient/weather/rain4.ogg", "sound3/ambient/weather/thunder1.ogg", "sound3/ambient/weather/thunder2.ogg",
+                                "sound3/ambient/weather/thunder3.ogg", "sound3/mob/chicken/say1.ogg", "sound3/mob/chicken/say2.ogg",
+                                "sound3/mob/chicken/say3.ogg", "sound3/mob/pig/say1.ogg", "sound3/mob/pig/say2.ogg",
+                                "sound3/mob/pig/say3.ogg", "sound3/mob/sheep/say1.ogg", "sound3/mob/sheep/say2.ogg",
+                                "sound3/mob/sheep/say3.ogg", "sound3/mob/spider/say1.ogg", "sound3/mob/spider/say2.ogg",
+                                "sound3/mob/spider/say3.ogg"};
 		URL url;
 		ReadableByteChannel rbc;
 		File file;
@@ -140,6 +149,8 @@ public class ResourceDownloadThread extends Thread {
 		folder.mkdir();
 		folder = new File(folder, "step");
 		folder.mkdir();
+                folder = new File(dir, "sound3");
+                folder.mkdir();
 
 		File musicFolder = new File(dir, "music");
 		File stepsFolder = new File(dir, "newsound/step");
@@ -147,6 +158,18 @@ public class ResourceDownloadThread extends Thread {
 		digFolder.mkdir();
 		File randomFolder = new File(dir, "sound3/random");
 		randomFolder.mkdir();
+                File fireworksFolder = new File(dir, "sound3/fireworks");
+                fireworksFolder.mkdir();
+                File weatherFolder = new File(dir, "sound3/ambient/weather");
+                weatherFolder.mkdir();
+                File pigFolder = new File(dir, "sound3/mob/pig");
+                pigFolder.mkdir();
+                File sheepFolder = new File(dir, "sound3/mob/sheep");
+                sheepFolder.mkdir();
+                File chickenFolder = new File(dir, "sound3/mob/chicken");
+                chickenFolder.mkdir();
+                File spiderFolder = new File(dir, "sound3/mob/spider");
+                spiderFolder.mkdir();
 
 		try {
 			GameSettings.PercentString = "5%";
@@ -234,11 +257,42 @@ public class ResourceDownloadThread extends Thread {
 					+ ".ogg");
 			minecraft.sound.registerSound(new File(digFolder, "snow" + i + ".ogg"), "dig/snow" + i
 					+ ".ogg");
+                        /*minecraft.sound.registerSound(new File(weatherFolder, "rain" + i + ".ogg"), "ambient/weather/rain" + i
+					+ ".ogg");*/
+                        
 		}
 		for (int i = 1; i <= 3; i++) {
 			minecraft.sound.registerSound(new File(randomFolder, "glass" + i + ".ogg"),
 					"random/glass" + i + ".ogg");
+                        minecraft.sound.registerSound(new File(randomFolder, "explode" + i + ".ogg"),
+					"random/explode" + i + ".ogg");
+                        minecraft.sound.registerSound(new File(pigFolder, "say" + i + ".ogg"),
+					"mob/pig/say" + i + ".ogg");
+                        minecraft.sound.registerSound(new File(chickenFolder, "say" + i + ".ogg"),
+					"mob/chicken/say" + i + ".ogg");
+                        minecraft.sound.registerSound(new File(sheepFolder, "say" + i + ".ogg"),
+					"mob/sheep/say" + i + ".ogg");
+                        minecraft.sound.registerSound(new File(spiderFolder, "say" + i + ".ogg"),
+					"mob/spider/say" + i + ".ogg");
+                        /*minecraft.sound.registerSound(new File(weatherFolder, "thunder" + i + ".ogg"),
+					"ambient/weather/thunder" + i + ".ogg");*/
 		}
+                
+                for (int i = 1; i <= 1; i++)
+                {
+                    minecraft.sound.registerSound(new File(fireworksFolder, "blast" + i + ".ogg"), "fireworks/blast" + i
+                            + ".ogg");
+                    minecraft.sound.registerSound(new File(fireworksFolder, "launch" + i + ".ogg"), "fireworks/launch" + i
+                            + ".ogg");
+                    minecraft.sound.registerSound(new File(fireworksFolder, "twinkle" + i + ".ogg"), "fireworks/twinkle" + i
+                            + ".ogg");
+                    /*minecraft.sound.registerSound(new File(randomFolder, "fuse" + ".ogg"), "random/fuse"
+                            + ".ogg");
+                    minecraft.sound.registerSound(new File(randomFolder, "splash" + ".ogg"), "random/splash"
+                            + ".ogg"); */                   
+                }
+                
+                
 		finished = true;
 	}
 

@@ -2963,6 +2963,17 @@ public final class Minecraft implements Runnable {
 											isRaining = false;
 										}
 									}
+                                                                        
+                                                                        else if (packetType == PacketType.PLAY_SOUND)
+                                                                        {
+                                                                            String SoundID = (String) packetParams[0];                                                                        
+                                                                            short xCoord = ((Short) packetParams[1]).byteValue();
+                                                                            short yCoord = ((Short) packetParams[2]).byteValue();
+                                                                            short zCoord = ((Short) packetParams[3]).byteValue();
+                                                                            byte Volume = ((Byte) packetParams[4]).byteValue();
+                                                                            String[] accepted = {"random.explode", "mob.pig.say", "mob.cow.say", "mob.chicken.say", "mob.spider.say", "random.blast", "random.launch"};
+                                                                            level.playSound("random.explode", xCoord, yCoord, zCoord, Volume, 1.0F);
+                                                                        }
 
 									else if (packetType == PacketType.IDENTIFICATION) {
 										networkManager.minecraft.progressBar

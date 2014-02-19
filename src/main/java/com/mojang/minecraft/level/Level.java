@@ -953,6 +953,7 @@ public class Level implements Serializable {
 
 	}
 
+        //1 is sound name, 2 is x, 3 is y, 4 is z, 5 is volume, 6 is pitch
 	public void playSound(String var1, float var2, float var3, float var4, float var5, float var6) {
 		if (rendererContext$5cd64a7f != null) {
 			Minecraft var7;
